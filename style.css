@@ -4,7 +4,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr 6fr 1fr;
-
+    font-family: 'Tinos', sans-serif;
 }
 
 main {
@@ -13,10 +13,11 @@ main {
     grid-row: 2;
     grid-column: 2;
     position: relative;
+    font-family: 'Tinos', sans-serif;
 }
 .timer{
     background-color: blue;
-    align-items: left;
+    left: 0%;
     display: inline-block;
 }
 .score {
