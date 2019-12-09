@@ -1,5 +1,5 @@
 body {
-    background-image: "https://mcdn.wallpapersafari.com/medium/59/87/ZzNqoJ.jpg";
+    background-image: url(https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
     align-content: center;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
@@ -8,8 +8,23 @@ body {
 }
 
 main {
-    background-color: lightblue;
+    background-color: rgba(210, 180, 140, 0.9);
     height: 500px;
     grid-row: 2;
     grid-column: 2;
+}
+.timer{
+    background-color: blue;
+    align-items: left;
+    display: inline-block;
+}
+.score {
+    background-color: rgb(41, 210, 223);
+    position: absolute;
+    right: 18%;
+    display: inline-block
+}
+
+.answerChoice{
+    
 }

@@ -10,6 +10,10 @@ Features
 
 Bronze level; 
 
+popUp Module
+![wire Frame](https://docs.google.com/document/d/1AUF9G_0aoVmGFE_eAr_iTa7O7XiKT4cOiV5SK1tmMww/edit?usp=sharing)
+
+
 diisplay on mobile
 working on my portfolio
 play button take you to game
@@ -37,3 +41,4 @@ Javascript -computing and making things happen
 html- website development
 
 ERRORS:
+[Errors](https://drive.google.com/open?id=1KoQ6pCPQxt_Sp7UDT-Z0SfrdnA-elOET)
