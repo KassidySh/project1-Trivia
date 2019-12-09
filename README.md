@@ -11,7 +11,8 @@ Features
 Bronze level; 
 
 popUp Module
-![wire Frame](https://docs.google.com/document/d/1AUF9G_0aoVmGFE_eAr_iTa7O7XiKT4cOiV5SK1tmMww/edit?usp=sharing)
+[wire Frame](https://docs.google.com/document/d/1AUF9G_0aoVmGFE_eAr_iTa7O7XiKT4cOiV5SK1tmMww/edit?usp=sharing)
+[timeLine](https://docs.google.com/document/d/1pVFWI9Ffss8oMElsgsvctqHnRwYWj5Z9JsQl2UhS644/edit?usp=sharing)
 
 
 diisplay on mobile
