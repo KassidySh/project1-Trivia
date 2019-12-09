@@ -1,13 +1,12 @@
 body {
-    background-color: lightseagreen;
+    background-image: "https://mcdn.wallpapersafari.com/medium/59/87/ZzNqoJ.jpg";
     align-content: center;
-    /* padding: 7% 10%;  */
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr 6fr 1fr;
-    /* justify-items: center;
-    align-items: center; */
+
 }
+
 main {
     background-color: lightblue;
     height: 500px;

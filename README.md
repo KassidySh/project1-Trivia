@@ -2,7 +2,7 @@
 
 Project Title
 
-This is a trivia game based on superheros. The goal is to get as many points as you can, you score points based on the question difficulty and in the end you get a final total. It should be a fun way to find out how much you know about superheros.
+This is a trivia game based on books. The goal is to get as many points as you can, you score points based on the question difficulty and in the end you get a final total. It should be a fun way to find out how much you know about books.
 
 Brief example/ screen shot
 
@@ -21,7 +21,7 @@ a button that randomly appears, when it does and is clicked on you get taken to 
 this is worth double points
 
 Gold level;
-have 4 gameplay options; batman, Justice Legue, X-men, Marvel
+have 4 gameplay options; books, comics, theatre, mythology
 
 Installation instructions:
 shouldn't need to be installed it's on my website
