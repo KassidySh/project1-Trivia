@@ -22,7 +22,7 @@ main {
 .score {
     background-color: rgb(41, 210, 223);
     position: absolute;
-    right: 18%;
+    right: 0%;
     display: inline-block
 }
 
