@@ -70,7 +70,7 @@ function createAnswers(shuffledQs){
     workableRightAnswer(rightAnswer)
     let answers = shuffledQs[3].incorrect_answers
     workableAnswerChoices(answers)
-    answers.push(rightAnswer)
+    answers.push(fixedRightAnswer)
     shuffleAnswers(answers)
     assignAnswers(answers)
 }
@@ -81,34 +81,34 @@ function createAnswers(shuffledQs){
 function workableRightAnswer (rightAnswer){
     if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        rightAnswer = rightAnswer    
+        fixedRightAnswer = rightAnswer    
      }
      //rplace apostrophe
      else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&amp;") == -1
      && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        rightAnswer = rightAnswer.replace(/&#039;/gi,'\'') // source this thing you found
+        fixedRightAnswer = rightAnswer.replace(/&#039;/gi,'\'') // source this thing you found
      }
      //replace quotes
      else if(rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
      && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        rightAnswer = rightAnswer.replace(/&quot;/gi,'\"')
+        fixedRightAnswer = rightAnswer.replace(/&quot;/gi,'\"')
      }
      //replace fancy and (ampersand)
      else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&#039;") == -1
      && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        rightAnswer = rightAnswer.replace(/&amp;/gi,'&') // source this thing you found
+        fixedRightAnswer = rightAnswer.replace(/&amp;/gi,'&') // source this thing you found
      }
      //replace ë
      else if(rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
-     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&quot;") == -1){
-        rightAnswer = rightAnswer.replace(/&euml;/gi,'ë')
-     }
+         && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&quot;") == -1){
+            fixedRightAnswer = rightAnswer.replace(/&euml;/gi,'ë')
+         }
      //replace accent e
      else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&amp;") == -1
      && rightAnswer.search("&#039;") == -1 && rightAnswer.search("&euml;") == -1){
-        rightAnswer = rightAnswer.replace(/&eacute;/gi,'\'') // source this thing you found
+        fixedRightAnswer = rightAnswer.replace(/&eacute;/gi,'\'') // source this thing you found
      }
-
+     return fixedRightAnswer
 }
 
 function workableAnswerChoices (answers){
@@ -167,7 +167,7 @@ optionC.addEventListener('click', pickedAnswer)
 optionD.addEventListener('click', pickedAnswer)
 
 function pickedAnswer (e){
-    console.log(optionA.innerText)
+    console.log(this.innerText)
 }
 
 
