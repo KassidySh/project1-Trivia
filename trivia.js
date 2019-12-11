@@ -5,12 +5,13 @@ const optionB = document.querySelector('#optionB')
 const optionC = document.querySelector('#optionC')
 const optionD = document.querySelector('#optionD')
 const next = document.querySelector('.next')
+
 let clickCount = (0)
 let shuffledQs = []
 // next.addEventListener('click',newQuestion)
 next.addEventListener('click',getQuestionList)
 // have the fetch be it's own function => store data into a variable
-    
+
 function getQuestionList () {
     fetch(url)
     .then(res => res.json())
@@ -86,7 +87,7 @@ function searchAns (answers){
 // makeAnswers()
     // parse the data
     // transplate answer/shuffle logic here
-    // append to DOM
+    // append to DOMmkdir
 
 // checkAnswers()
     // if clicked answer is wrong
