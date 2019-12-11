@@ -6,6 +6,7 @@ const optionC = document.querySelector('#optionC')
 const optionD = document.querySelector('#optionD')
 const next = document.querySelector('.next')
 
+
 let clickCount = (0)
 let shuffledQs = []
 // next.addEventListener('click',newQuestion)
@@ -66,10 +67,83 @@ function newQuestion (shuffledQs){
 // assign all the answers to different buttons
 function createAnswers(shuffledQs){
     let rightAnswer = shuffledQs[3].correct_answer
+    workableRightAnswer(rightAnswer)
     let answers = shuffledQs[3].incorrect_answers
+    workableAnswerChoices(answers)
     answers.push(rightAnswer)
     shuffleAnswers(answers)
-    searchAns(answers)
+    assignAnswers(answers)
+}
+
+
+// &eacute;
+
+function workableRightAnswer (rightAnswer){
+    if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
+    && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
+        rightAnswer = rightAnswer    
+     }
+     //rplace apostrophe
+     else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&amp;") == -1
+     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
+        rightAnswer = rightAnswer.replace(/&#039;/gi,'\'') // source this thing you found
+     }
+     //replace quotes
+     else if(rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
+     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
+        rightAnswer = rightAnswer.replace(/&quot;/gi,'\"')
+     }
+     //replace fancy and (ampersand)
+     else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&#039;") == -1
+     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
+        rightAnswer = rightAnswer.replace(/&amp;/gi,'&') // source this thing you found
+     }
+     //replace ë
+     else if(rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
+     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&quot;") == -1){
+        rightAnswer = rightAnswer.replace(/&euml;/gi,'ë')
+     }
+     //replace accent e
+     else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&amp;") == -1
+     && rightAnswer.search("&#039;") == -1 && rightAnswer.search("&euml;") == -1){
+        rightAnswer = rightAnswer.replace(/&eacute;/gi,'\'') // source this thing you found
+     }
+
+}
+
+function workableAnswerChoices (answers){
+    for(i=0; i<answers.length; i=i+1){
+        if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
+        && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+            answers[i] = answers[i]    
+         }
+         //rplace apostrophe
+         else if (answers[i].search("&quot;") == -1 && answers[i].search("&amp;") == -1
+         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+            answers[i] = answers[i].replace(/&#039;/gi,'\'') // source this thing you found
+         }
+         //replace quotes
+         else if(answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
+         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+            answers[i] = answers[i].replace(/&quot;/gi,'\"')
+         }
+         //replace fancy and (ampersand)
+         else if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1
+         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+            answers[i] = answers[i].replace(/&amp;/gi,'&') // source this thing you found
+         }
+         //replace ë
+         else if(answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
+         && answers[i].search("&eacute") == -1 && answers[i].search("&quot;") == -1){
+            answers[i] = answers[i].replace(/&euml;/gi,'ë')
+         }
+         //replace accent e
+         else if (answers[i].search("&quot;") == -1 && answers[i].search("&amp;") == -1
+         && answers[i].search("&#039;") == -1 && answers[i].search("&euml;") == -1){
+            answers[i] = answers[i].replace(/&eacute;/gi,'\'') // source this thing you found
+         }
+    
+    }
 }
 // shuffle answers
 function shuffleAnswers(answers) {
@@ -79,10 +153,27 @@ function shuffleAnswers(answers) {
 
     }
 }
-
-function searchAns (answers){
-    console.log(answers)
+//assign answer to answer option
+function assignAnswers(answers) {
+    optionA.innerText = answers[0]
+    optionB.innerText = answers[1]
+    optionC.innerText = answers[2]
+    optionD.innerText = answers[3]
 }
+
+optionA.addEventListener('click', pickedAnswer)
+optionB.addEventListener('click', pickedAnswer)
+optionC.addEventListener('click', pickedAnswer)
+optionD.addEventListener('click', pickedAnswer)
+
+function pickedAnswer (e){
+    console.log(optionA.innerText)
+}
+
+
+// function searchAns (answers){
+//     console.log(answers)
+// }
 
 // makeAnswers()
     // parse the data
