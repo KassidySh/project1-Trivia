@@ -4,15 +4,21 @@ const optionA = document.querySelector('#optionA')
 const optionB = document.querySelector('#optionB')
 const optionC = document.querySelector('#optionC')
 const optionD = document.querySelector('#optionD')
+const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
 
-
-let clickCount = (0)
+let questionArr = []
+let clickCount = 0
 let shuffledQs = []
 // next.addEventListener('click',newQuestion)
-next.addEventListener('click',getQuestionList)
+start.addEventListener('click', getQuestionList)
+next.addEventListener('click',nextQuestion)
 // have the fetch be it's own function => store data into a variable
 
+
+// randomize that array
+    // call the createQuestion() with the first question
+    // call createAnswers( with the first question/answer obj?)
 function getQuestionList () {
     fetch(url)
     .then(res => res.json())
@@ -35,18 +41,30 @@ function questionSetUp(data){
     let firstResults = data.results
     shuffle(firstResults)
     shuffledQs = firstResults
-    
+    for (let i=0; i<10; i=i+1){
+        questionArr.push(shuffledQs[i])
+    }
+    next.style.visibility = 'visible'
+    nextQuestion(questionArr)
+    return questionArr
+}
+
+ function nextQuestion(questionArr){
     newQuestion(shuffledQs)
     createAnswers(shuffledQs)
-}
-// randomize that array
-    // call the createQuestion() with the first question
-    // call createAnswers( with the first question/answer obj?)
+    clickCount=clickCount+1
+    console.log(clickCount)
 
+    if (clickCount === 10){
+        next.innerText = 'finish'
+    }
 
-function newQuestion (shuffledQs){
+    return clickCount
+ }
 
-    let currentQuestion = shuffledQs[3].question
+function newQuestion (questionArr){
+
+    let currentQuestion = questionArr[clickCount].question
     //find out if something needs a quote
     if (currentQuestion.search("&quot;") == -1 && currentQuestion.search("&#039;") == -1){
        question.innerText = currentQuestion
@@ -65,9 +83,9 @@ let rightAnswer = ('')
 // find correct answer
 // make array for all answers
 // assign all the answers to different buttons
-function createAnswers(shuffledQs){
-    rightAnswer = shuffledQs[3].correct_answer
-    let answers = shuffledQs[3].incorrect_answers
+function createAnswers(questionArr){
+    rightAnswer = questionArr[clickCount].correct_answer
+    let answers = questionArr[clickCount].incorrect_answers
     answers.push(rightAnswer)
     workableAnswerChoices(answers)
     rightAnswer = answers[3]
@@ -135,15 +153,6 @@ function pickedAnswer (e){
     console.log('this is the right answer, ', rightAnswer)
 }
 
-
-// function searchAns (answers){
-//     console.log(answers)
-// }
-
-// makeAnswers()
-    // parse the data
-    // transplate answer/shuffle logic here
-    // append to DOMmkdir
 
 // checkAnswers()
     // if clicked answer is wrong

@@ -26,7 +26,9 @@ main {
     right: 0%;
     display: inline-block
 }
-
+.next{
+    visibility: hidden;
+}
 .answerbox{
     display: grid;
     grid-template-columns: 1fr 1fr;
