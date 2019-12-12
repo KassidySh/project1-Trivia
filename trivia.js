@@ -61,54 +61,18 @@ function newQuestion (shuffledQs){
         question.innerText = quotedQuestion
     }
 }
-
+let rightAnswer = ('')
 // find correct answer
 // make array for all answers
 // assign all the answers to different buttons
 function createAnswers(shuffledQs){
-    let rightAnswer = shuffledQs[3].correct_answer
-    workableRightAnswer(rightAnswer)
+    rightAnswer = shuffledQs[3].correct_answer
     let answers = shuffledQs[3].incorrect_answers
+    answers.push(rightAnswer)
     workableAnswerChoices(answers)
-    answers.push(fixedRightAnswer)
+    rightAnswer = answers[3]
     shuffleAnswers(answers)
     assignAnswers(answers)
-}
-
-
-// &eacute;
-
-function workableRightAnswer (rightAnswer){
-    if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
-    && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        fixedRightAnswer = rightAnswer    
-     }
-     //rplace apostrophe
-     else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&amp;") == -1
-     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        fixedRightAnswer = rightAnswer.replace(/&#039;/gi,'\'') // source this thing you found
-     }
-     //replace quotes
-     else if(rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
-     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        fixedRightAnswer = rightAnswer.replace(/&quot;/gi,'\"')
-     }
-     //replace fancy and (ampersand)
-     else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&#039;") == -1
-     && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&euml;") == -1){
-        fixedRightAnswer = rightAnswer.replace(/&amp;/gi,'&') // source this thing you found
-     }
-     //replace ë
-     else if(rightAnswer.search("&#039;") == -1 && rightAnswer.search("&amp;") == -1
-         && rightAnswer.search("&eacute") == -1 && rightAnswer.search("&quot;") == -1){
-            fixedRightAnswer = rightAnswer.replace(/&euml;/gi,'ë')
-         }
-     //replace accent e
-     else if (rightAnswer.search("&quot;") == -1 && rightAnswer.search("&amp;") == -1
-     && rightAnswer.search("&#039;") == -1 && rightAnswer.search("&euml;") == -1){
-        fixedRightAnswer = rightAnswer.replace(/&eacute;/gi,'\'') // source this thing you found
-     }
-     return fixedRightAnswer
 }
 
 function workableAnswerChoices (answers){
@@ -167,7 +131,8 @@ optionC.addEventListener('click', pickedAnswer)
 optionD.addEventListener('click', pickedAnswer)
 
 function pickedAnswer (e){
-    console.log(this.innerText)
+    console.log('this is the guess, ', this.innerText)
+    console.log('this is the right answer, ', rightAnswer)
 }
 
 
