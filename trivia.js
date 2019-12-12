@@ -7,7 +7,13 @@ const optionD = document.querySelector('#optionD')
 const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
 const finish = document.querySelector('.finish')
+const scoreBoard = document.querySelector('.score')
 
+optionA.addEventListener('click', pickedAnswer)
+optionB.addEventListener('click', pickedAnswer)
+optionC.addEventListener('click', pickedAnswer)
+optionD.addEventListener('click', pickedAnswer)
+let score = 0
 let questionArr = []
 let clickCount = 0
 let shuffledQs = []
@@ -32,7 +38,7 @@ function getQuestionList () {
 
 function shuffle(firstResults) {
     for (let i =0; i<firstResults.length; i=i+1) {
-      let j = Math.floor(Math.random() * (i + 1));
+      let j = Math.floor(Math.random());
       [firstResults[i], firstResults[j]] = [firstResults[j], firstResults[i]];
 
     }
@@ -77,11 +83,16 @@ function newQuestion (questionArr){
        
     }
     else if (currentQuestion.search("&quot;") == -1){
-        let questionQuote = currentQuestion.replace(/&#039;/gi,'\"') // source this thing you found
+        let questionQuote = currentQuestion.replace(/&#039;/gi,'\'') // source this thing you found
         question.innerText = questionQuote
     }
     else if(currentQuestion.search("&#039;") == -1){
-        let quotedQuestion = currentQuestion.replace(/&quot;/gi,'\'')
+        let quotedQuestion = currentQuestion.replace(/&quot;/gi,'\"')
+        question.innerText = quotedQuestion
+    }
+    else{
+        let questionQuote = currentQuestion.replace(/&#039;/gi,'\'')
+        let quotedQuestion = questionQuote.replace(/&quot;/gi,'\"')
         question.innerText = quotedQuestion
     }
 }
@@ -136,7 +147,7 @@ function workableAnswerChoices (answers){
 // shuffle answers
 function shuffleAnswers(answers) {
     for (let i =0; i<answers.length; i=i+1) {
-      let j = Math.floor(Math.random() * (i + 1));
+      let j = Math.floor(Math.random());
       [answers[i], answers[j]] = [answers[j], answers[i]];
 
     }
@@ -148,12 +159,6 @@ function assignAnswers(answers) {
     optionC.innerText = answers[2]
     optionD.innerText = answers[3]
 }
-
-optionA.addEventListener('click', pickedAnswer)
-optionB.addEventListener('click', pickedAnswer)
-optionC.addEventListener('click', pickedAnswer)
-optionD.addEventListener('click', pickedAnswer)
-
 // checkAnswers()
     // if clicked answer is wrong
         // dont add a point
@@ -165,6 +170,8 @@ function pickedAnswer (e){
     
     if (this.innerText == rightAnswer){
     question.innerText = 'CORRECT'
+    score = score + 10
+    scoreBoard.innerText = `Score = ${score}`
     }
     else {
         question.innerText = `Sorry the correct answer was ${rightAnswer} `
@@ -180,16 +187,10 @@ function pickedAnswer (e){
         // .innerHTML = i
     // }, 1000)
 
-// let seconds = document.querySelector(".timer").textContent;
-// let countdown = setInterval(function() {
-//     seconds--;
-//     document.querySelector(".timer").textContent = seconds;
-//     if (seconds <= 0) clearInterval(countdown);
-// }, 1000);
 
-const timer = document.querySelector(".timer")
- 
-setTimeout(() => {
-        for (i=15; i>0; i=i-1){
-        timer.innerHTML = i}
-    }, 1000)
+// const timer = document.querySelector(".timer")
+// let countdown = setInterval(myTimer, 1000)
+// setInterval(() => {
+//         for (i=15; i>0; i=i-1){
+//         timer.innerHTML = i}
+//     }, 1000)
