@@ -29,6 +29,10 @@ main {
 .next{
     visibility: hidden;
 }
+
+.finish {
+    visibility: hidden;
+}
 .answerbox{
     display: grid;
     grid-template-columns: 1fr 1fr;

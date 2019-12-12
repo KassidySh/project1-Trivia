@@ -6,6 +6,7 @@ const optionC = document.querySelector('#optionC')
 const optionD = document.querySelector('#optionD')
 const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
+const finish = document.querySelector('.finish')
 
 let questionArr = []
 let clickCount = 0
@@ -57,6 +58,8 @@ function questionSetUp(data){
 
     if (clickCount === 10){
         next.innerText = 'finish'
+        next.style.visibility = 'hidden'
+        finish.style.visibility = 'visible'
     }
     else if (clickCount == 11){
         console.log('done')
@@ -151,26 +154,25 @@ optionB.addEventListener('click', pickedAnswer)
 optionC.addEventListener('click', pickedAnswer)
 optionD.addEventListener('click', pickedAnswer)
 
+// checkAnswers()
+    // if clicked answer is wrong
+        // dont add a point
+        // innerText header tag
+    // if clicked answer is right
+        // add a point => say congrats!
+
 function pickedAnswer (e){
     
     if (this.innerText == rightAnswer){
-    question.innerText = 'CORRECT'}
+    question.innerText = 'CORRECT'
+    }
     else {
-
         question.innerText = `Sorry the correct answer was ${rightAnswer} `
     }
 
 }
 
 
-// checkAnswers()
-    // if clicked answer is wrong
-        // dont add a point => maybe add modal
-        // make red border
-        // or make invisible p tag that appears with write answer past into it
-        // document.createElement(p).innerHTML(`data.rightanswer`)
-    // if clicked answer is right
-        // add a point => say congrats!
 
 // timerFunc()
     // setTimeout(() => {
@@ -178,6 +180,16 @@ function pickedAnswer (e){
         // .innerHTML = i
     // }, 1000)
 
-// easter egg?
-    // bonus points!
+// let seconds = document.querySelector(".timer").textContent;
+// let countdown = setInterval(function() {
+//     seconds--;
+//     document.querySelector(".timer").textContent = seconds;
+//     if (seconds <= 0) clearInterval(countdown);
+// }, 1000);
 
+const timer = document.querySelector(".timer")
+ 
+setTimeout(() => {
+        for (i=15; i>0; i=i-1){
+        timer.innerHTML = i}
+    }, 1000)
