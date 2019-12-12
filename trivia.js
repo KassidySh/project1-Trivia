@@ -8,6 +8,7 @@ const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
 const finish = document.querySelector('.finish')
 const scoreBoard = document.querySelector('.score')
+const allAnswers = document.querySelectorAll('.answerChoice')
 const timer = document.querySelector(".timer")
 
 optionA.addEventListener('click', pickedAnswer)
@@ -52,9 +53,24 @@ function questionSetUp(data){
     for (let i=0; i<10; i=i+1){
         questionArr.push(shuffledQs[i])
     }
-    next.style.visibility = 'visible'
+    setVisibility()
     nextQuestion(questionArr)
+    // countDown()
+
+var seconds = document.querySelector(".timer").textContent;
+var countdown = setInterval(function() {
+    seconds--;
+    document.querySelector(".timer").textContent = seconds;
+    if (seconds <= 0) clearInterval(countdown);
+}, 1000);
     return questionArr
+}
+
+function setVisibility (){
+    for (i =0; i<allAnswers.length; i=i+1){
+        allAnswers[i].style.display = 'block'
+    }
+    next.style.visibility = 'visible'
 }
 
  function nextQuestion(questionArr){
@@ -188,19 +204,31 @@ function pickedAnswer (e){
 //     }, 1000)
 
 
-let seconds = document.querySelector(".timer").textContent;
-let countdown = setInterval(()=> {
-    seconds--;
-    document.querySelector(".timer").textContent = seconds;
-    if (seconds <= 0) clearInterval(countdown);
-}, 1000);
 
 
-// let time = timer.innerText
-// function countdown(){
-//     setInterval()
-//     timer --
-//     return timer
-//     }1000
+// function countDown(){
+//     let seconds = document.querySelector(".timer").textContent;
+// let countdown = setInterval(()=> {
+//     seconds--;
+//     document.querySelector(".timer").textContent = seconds;
+// //     allAnswers.addEventListener('click',stopClock)
+    
+// // function stopClock () {
+// //     clearInterval(intervalId)
+
+
+//     if (seconds <= 0) clearInterval(ID);
+
+//     // else 
+//     //     allAnswers.addEventListener('click',stopClock)
+//     //     clearInterval(intervalId)
+    
+// }, 1000);
 // }
-// setInterval(countdown,1000)
+
+// var seconds = document.querySelector(".timer").textContent;
+// var countdown = setInterval(function() {
+//     seconds--;
+//     document.querySelector(".timer").textContent = seconds;
+//     if (seconds <= 0) clearInterval(countdown);
+// }, 1000);

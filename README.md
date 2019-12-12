@@ -41,5 +41,16 @@ css -styling
 Javascript -computing and making things happen
 html- website development
 
+sites used for research:
+used for shuffle
+https://teamtreehouse.com/community/return-mathrandom05
+https://news.ycombinator.com/item?id=2728914
+used for searching through a string and replacing sections
+https://www.w3schools.com/jsref/jsref_replace.asp
+used for countdown timer
+https://tonnygaric.com/blog/create-a-seconds-countdown-in-6-lines-of-javascript
+image opacity
+https://www.w3schools.com/css/css_image_transparency.asp
+
 ERRORS:
 [Errors](https://drive.google.com/open?id=1KoQ6pCPQxt_Sp7UDT-Z0SfrdnA-elOET)
