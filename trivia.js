@@ -58,6 +58,9 @@ function questionSetUp(data){
     if (clickCount === 10){
         next.innerText = 'finish'
     }
+    else if (clickCount == 11){
+        console.log('done')
+    }
 
     return clickCount
  }
@@ -149,8 +152,14 @@ optionC.addEventListener('click', pickedAnswer)
 optionD.addEventListener('click', pickedAnswer)
 
 function pickedAnswer (e){
-    console.log('this is the guess, ', this.innerText)
-    console.log('this is the right answer, ', rightAnswer)
+    
+    if (this.innerText == rightAnswer){
+    question.innerText = 'CORRECT'}
+    else {
+
+        question.innerText = `Sorry the correct answer was ${rightAnswer} `
+    }
+
 }
 
 
