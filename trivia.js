@@ -8,6 +8,7 @@ const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
 const finish = document.querySelector('.finish')
 const scoreBoard = document.querySelector('.score')
+const timer = document.querySelector(".timer")
 
 optionA.addEventListener('click', pickedAnswer)
 optionB.addEventListener('click', pickedAnswer)
@@ -60,7 +61,6 @@ function questionSetUp(data){
     newQuestion(shuffledQs)
     createAnswers(shuffledQs)
     clickCount=clickCount+1
-    console.log(clickCount)
 
     if (clickCount === 10){
         next.innerText = 'finish'
@@ -176,21 +176,31 @@ function pickedAnswer (e){
     else {
         question.innerText = `Sorry the correct answer was ${rightAnswer} `
     }
-
+    console.log(clickCount)
 }
 
 
 
 // timerFunc()
-    // setTimeout(() => {
-        // forloop subtracts 1 from 30
-        // .innerHTML = i
-    // }, 1000)
-
-
-// const timer = document.querySelector(".timer")
-// let countdown = setInterval(myTimer, 1000)
-// setInterval(() => {
-//         for (i=15; i>0; i=i-1){
-//         timer.innerHTML = i}
+//     setTimeout(() => {
+//         forloop subtracts 1 from 30
+//         .innerHTML = i
 //     }, 1000)
+
+
+let seconds = document.querySelector(".timer").textContent;
+let countdown = setInterval(()=> {
+    seconds--;
+    document.querySelector(".timer").textContent = seconds;
+    if (seconds <= 0) clearInterval(countdown);
+}, 1000);
+
+
+// let time = timer.innerText
+// function countdown(){
+//     setInterval()
+//     timer --
+//     return timer
+//     }1000
+// }
+// setInterval(countdown,1000)
