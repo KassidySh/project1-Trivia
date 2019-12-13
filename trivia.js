@@ -7,22 +7,26 @@ const optionC = document.querySelector('#optionC')
 const optionD = document.querySelector('#optionD')
 const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
-const finish = document.querySelector('.finish')
 const scoreBoard = document.querySelector('.score')
 const allAnswers = document.querySelectorAll('.answerChoice')
 const timer = document.querySelector(".timer")
 //modal late
 const modal = document.querySelector("#tooLate");
 const closeLateModal = document.querySelector(".close");
+//game finished modal
+const overModal = document.querySelector('#gameFinished')
+const replay = document.querySelector('.replay')
 let rightAnswer = ('')
 let score = 0
 let questionArr = []
 let clickCount = 0
 let shuffledQs = []
 closeLateModal.addEventListener('click',skipQuestion) 
+replay.addEventListener('click', backHome)
 scoreBoard.addEventListener('click', reset)
 start.addEventListener('click', getQuestionList)
 next.addEventListener('click',nextQuestion)
+
 // fetch function
 function getQuestionList () {
     fetch(url)
@@ -76,10 +80,9 @@ function questionSetUp(data){
     if (clickCount === 10){
         next.innerText = 'finish'
         next.style.visibility = 'hidden'
-        finish.style.visibility = 'visible'
     }
     else if (clickCount == 11){
-        console.log('done')
+        overModal.style.display = "block"
     }
 
     return clickCount
@@ -209,4 +212,7 @@ function playTime(){
 function reset(){
     score = 0
     scoreBoard.innerText =`Score = ${score}`
+}
+function backHome(){
+    overModal.style.display = 'none'
 }

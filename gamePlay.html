@@ -20,12 +20,11 @@
         </div>
     <!-- End Of Modal -->
     <nav><div class = 'timer'>20</div><div class=score>Score = 0</div></nav>
-        <h2 class = question>Hi and welcome to #NAME HERE; There are 10 questions if you answer the question in 10 seconds or less
-            you'll get 10 points, if you answer in 20 you'll get 5 points and if you get stuck at the end of 20 seconds you can skip the question.
-            Click Start to begin.
+        <h2 class = question>Welcome to #NAME HERE; There are 10 questions you have 20 seconds to answer a question or else it will be skipped.
+            If you answer the question in 10 seconds you win 10 points, but if you answer in more you win 5 points. If you'd like to reset your score
+            click on the score button. Ready to go?
             <button class=start>start</button></h2>
         <button class=next>Next</button>
-        <button class =finish> <a href="gamePlay.html">Play</a></button>
         <div class = answerbox>
             <div class = answerChoice id = optionA>answer 1</div>    
             <div class = answerChoice id = optionB>answer 2</div>    
@@ -34,6 +33,15 @@
         </div>
 
     </main>
+
+    <!--  this is the game over modal -->
+        <div class="modal" id="gameFinished">
+            <div class="modal-content">
+                <a class = replay href ="index.html">
+                <p>Congradulations! Your score was would you like to play again?</p>
+            </div>
+        </div>
+
     <script src="trivia.js"></script>
 </body>
 </html>
