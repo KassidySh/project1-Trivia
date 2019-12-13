@@ -79,6 +79,7 @@ function questionSetUp(data){
     killTimeout = setTimeout(playTime, 20000)
 
     next.style.visibility = 'hidden'
+    next.innerText = 'next'
     clickCount=clickCount+1
     qCount.innerText = `Question ${clickCount}`
     if (clickCount === 10){
@@ -86,7 +87,10 @@ function questionSetUp(data){
         next.style.visibility = 'hidden'
     }
     else if (clickCount == 11){
-        modalText.innerText = `Congradulations! Your score was ${score} would you like to play again?`
+        qCount.innerText = `Question 10`
+        clearTimeout(killTimeout)
+        questionAnswered()
+        modalText.innerText = `Congratulations! Your score was ${score} would you like to play again?`
         overModal.style.display = "block"
     }
 
@@ -132,35 +136,39 @@ function createAnswers(questionArr){
 function workableAnswerChoices (answers){
     for(i=0; i<answers.length; i=i+1){
         if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-        && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+        && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
             answers[i] = answers[i]    
          }
          //rplace apostrophe
          else if (answers[i].search("&quot;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
             answers[i] = answers[i].replace(/&#039;/gi,'\'') // source this thing you found
          }
          //replace quotes
          else if(answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
             answers[i] = answers[i].replace(/&quot;/gi,'\"')
          }
          //replace fancy and (ampersand)
          else if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
             answers[i] = answers[i].replace(/&amp;/gi,'&') // source this thing you found
          }
          //replace ë
          else if(answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&quot;") == -1){
+         && answers[i].search("&eacute") == -1 && answers[i].search("&quot;") == -1 && answers[i].search("&rsquo;")== -1){
             answers[i] = answers[i].replace(/&euml;/gi,'ë')
          }
          //replace accent e
          else if (answers[i].search("&quot;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&#039;") == -1 && answers[i].search("&euml;") == -1){
+         && answers[i].search("&#039;") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
             answers[i] = answers[i].replace(/&eacute;/gi,'\'') // source this thing you found
          }
-    
+         //replace for bullseye
+        else if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
+        && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
+            answers[i] = answers[i]   .replace(/&rsquo;/gi,'\'')
+         }
     }
 }
 //assign answer to answer option
@@ -219,5 +227,6 @@ function reset(){
     scoreBoard.innerText =`Score = ${score}`
 }
 function backHome(){
+    getQuestionList()
     overModal.style.display = 'none'
 }
