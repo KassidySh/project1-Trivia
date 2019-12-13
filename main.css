@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    align-content: center;
+
+    font-family: 'Tinos', sans-serif;
+}
+main {
+    opacity: 1;
+    background-color: rgba(210, 180, 140, 0.9);
+    height: 500px;
+    position: relative;
+    margin:10%;
+    font-family: 'Tinos', sans-serif;
+    border-color: rgba(210, 180, 140, 0.9);
+    border-width: 10px;
+    border-style: solid;
+}
+h2{
+    height: 30%;
+    margin: 15% 30% 0 30%;
+    font-size: 40px;
+}
+a{
+    color: black;
+}
+.score {
+    font-size: 30px;
+    position: absolute;
+    right: 0%;
+    display: inline-block
+}
+#playGame{
+    font-size: 30px;
+    margin: 0 30% 30% 45%;
+}
+
+@media (max-width:425px) {
+    body{
+        align-content: center;
+        font-family: 'Tinos', sans-serif;
+        font-weight: 800;
+        font-size: 120%;
+        padding: 50px;
+    }
+    main{
+        height: 500px;
+        display: block;
+        border-width: 20px;
+        border-style: solid;
+        border-color: rgba(210, 180, 140, 0.9);
+    }
+    h2{
+        height: 30%;
+        font-size: 30px;
+        margin: 20% 5%;
+    }
+    a{
+        color: black;
+    }
+    .score {
+        font-size: 30px;
+        position: absolute;
+        right: 0%;
+        display: inline-block
+    }
+    #playGame{
+        font-size: 40px;
+        margin: 37%;
+    }
+}
