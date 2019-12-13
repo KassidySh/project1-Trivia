@@ -23,17 +23,64 @@ main {
     position: relative;
     font-family: 'Tinos', sans-serif;
 }
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: rgb(210, 180, 140);
+    margin: 15% auto;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 12px solid rgb(180, 150, 110);
+    height: 30%;
+    width: 40%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: rgb(72, 71, 71);
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20% 0 0 0;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+
+
 .styling {
 
     background-color: rgba(255,255,255,.5);
 }
 .timer{
-    background-color: blue;
-    left: 0%;
+    font-size: 40px;
+    font-weight: bold;
     display: inline-block;
 }
 .score {
-    background-color: rgb(41, 210, 223);
+    font-size: 40px;
     position: absolute;
     right: 0%;
     display: inline-block
@@ -91,25 +138,30 @@ main {
     body{
         align-content: center;
         display: auto;
-        /* grid-template-columns: 1fr 30fr 1fr;
-        grid-template-rows: 1fr 13fr 1fr; */
         font-family: 'Tinos', sans-serif;
     }
     main{
-        display: grid;
-        /* grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr; */
+        display: block;
+        position: relative;
     }
+    h2{
+        height: 30%;
+        position: relative;
+    }
+    nav{
+        height: 10%;
+    }
+
     .answerbox{
         bottom: 0;
         display: grid;
         width: 100%;
         grid-template-columns:  1fr ;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     }
 
     .answerChoice{
-    font-size: 30px;
+    font-size: 25px;
     border-width: 5px;
     height: 70%;
     padding: 2px;
@@ -117,25 +169,39 @@ main {
     width: 95%;
     display: hidden;
 }
+.next{
+    right: 0%;
+    top: 0%;
+    grid-row: 1;
+    grid-column: 1;
+}
+.start{
+    grid-row: 1;
+    grid-column: 1;
+}
+.finish{
+    grid-row: 1;
+    grid-column: 1;
+}
 
 #optionA{
-    display: inline;
-    grid-row: 1;
+
+    grid-row: 2;
     grid-column: 1;
 } 
 #optionB{ 
-    display: inline;
-    grid-row:2;
-    grid-column: 1;
-}
-#optionC{ 
-    display: inline;
+
     grid-row:3;
     grid-column: 1;
 }
-#optionD{
-    display: inline;
+#optionC{ 
+
     grid-row:4;
+    grid-column: 1;
+}
+#optionD{
+
+    grid-row:5;
     grid-column: 1;
 }
 }

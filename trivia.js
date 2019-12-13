@@ -10,20 +10,19 @@ const finish = document.querySelector('.finish')
 const scoreBoard = document.querySelector('.score')
 const allAnswers = document.querySelectorAll('.answerChoice')
 const timer = document.querySelector(".timer")
-
+//modal late
+const modal = document.querySelector("#tooLate");
+const closeLateModal = document.querySelector(".close");
+let rightAnswer = ('')
 let score = 0
 let questionArr = []
 let clickCount = 0
 let shuffledQs = []
-// next.addEventListener('click',newQuestion)
+closeLateModal.addEventListener('click',skipQuestion) 
+scoreBoard.addEventListener('click', reset)
 start.addEventListener('click', getQuestionList)
 next.addEventListener('click',nextQuestion)
-// have the fetch be it's own function => store data into a variable
-
-
-// randomize that array
-    // call the createQuestion() with the first question
-    // call createAnswers( with the first question/answer obj?)
+// fetch function
 function getQuestionList () {
     fetch(url)
     .then(res => res.json())
@@ -33,51 +32,44 @@ function getQuestionList () {
 //how I made a shuffle function
 //https://teamtreehouse.com/community/return-mathrandom05
 //https://news.ycombinator.com/item?id=2728914
-
-function shuffle(firstResults) {
-    for (let i =0; i<firstResults.length; i=i+1) {
-      let j = Math.floor(Math.random());
-      [firstResults[i], firstResults[j]] = [firstResults[j], firstResults[i]];
+function shuffle(results) {
+    for (let i =0; i<results.length; i=i+1) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [results[i], results[j]] = [results[j], results[i]];
 
     }
 }
-
+//setup board for first turn
+//add buttons & shuffle question list
 function questionSetUp(data){
-    let firstResults = data.results
-    shuffle(firstResults)
-    shuffledQs = firstResults
-    setVisibility()
-    nextQuestion(questionArr)
-    // countDown()
-
-// var seconds = document.querySelector(".timer").textContent;
-// var countdown = setInterval(function() {
-//     seconds--;
-//     document.querySelector(".timer").textContent = seconds;
-//     if (seconds <= 0) clearInterval(countdown);
-// }, 1000);
-
-
-    return questionArr
-}
-
-function setVisibility (){
+    let results = data.results
+    shuffle(results)
+    shuffledQs = results
     for (i =0; i<allAnswers.length; i=i+1){
         allAnswers[i].style.display = 'inline'
     }
-    next.style.visibility = 'visible'
-}
+    nextQuestion(questionArr)
+    return questionArr
 
+}
+//setup question
  function nextQuestion(questionArr){
     optionA.addEventListener('click', pickedAnswer)
     optionB.addEventListener('click', pickedAnswer)
     optionC.addEventListener('click', pickedAnswer)
     optionD.addEventListener('click', pickedAnswer)
+    next.style.visibility = 'hidden'
+    timer.innerText = 20
     newQuestion(shuffledQs)
     createAnswers(shuffledQs)
-    countDown()
-    clickCount=clickCount+1
+    //intervalbreak function and time
+    //set interval == infinite loop
+    //intervalbreak breaks it
+    timerBreak = setInterval(countDown, 1000)
+    killTimeout = setTimeout(playTime, 20000)
 
+    next.style.visibility = 'hidden'
+    clickCount=clickCount+1
     if (clickCount === 10){
         next.innerText = 'finish'
         next.style.visibility = 'hidden'
@@ -89,7 +81,7 @@ function setVisibility (){
 
     return clickCount
  }
-
+//search through questions for confusing characters
 function newQuestion (questionArr){
 
     let currentQuestion = questionArr[clickCount].question
@@ -112,7 +104,6 @@ function newQuestion (questionArr){
         question.innerText = quotedQuestion
     }
 }
-let rightAnswer = ('')
 // find correct answer
 // make array for all answers
 // assign all the answers to different buttons
@@ -122,10 +113,11 @@ function createAnswers(questionArr){
     answers.push(rightAnswer)
     workableAnswerChoices(answers)
     rightAnswer = answers[3]
-    shuffleAnswers(answers)
-    assignAnswers(answers)
+    results = answers
+    shuffle(results)
+    assignAnswers(results)
 }
-
+//search through answers and replace confusing code with readable words
 function workableAnswerChoices (answers){
     for(i=0; i<answers.length; i=i+1){
         if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
@@ -160,14 +152,6 @@ function workableAnswerChoices (answers){
     
     }
 }
-// shuffle answers
-function shuffleAnswers(answers) {
-    for (let i =0; i<answers.length; i=i+1) {
-      let j = Math.floor(Math.random());
-      [answers[i], answers[j]] = [answers[j], answers[i]];
-
-    }
-}
 //assign answer to answer option
 function assignAnswers(answers) {
     optionA.innerText = answers[0]
@@ -175,35 +159,51 @@ function assignAnswers(answers) {
     optionC.innerText = answers[2]
     optionD.innerText = answers[3]
 }
-// checkAnswers()
-    // if clicked answer is wrong
-        // dont add a point
-        // innerText header tag
-    // if clicked answer is right
-        // add a point => say congrats!
-
+//Modal When the user clicks on next button, close the modal
+function skipQuestion() {
+  modal.style.display = "none"
+  nextQuestion()
+}
+//review if answers right and assign points if it is
 function pickedAnswer (e){
+
     optionA.removeEventListener('click', pickedAnswer)
     optionB.removeEventListener('click', pickedAnswer)
     optionC.removeEventListener('click', pickedAnswer)
     optionD.removeEventListener('click', pickedAnswer)
-
-    if (this.innerText == rightAnswer){
-    question.innerText = 'CORRECT'
-    score = score + 10
-    scoreBoard.innerText = `Score = ${score}`
+    if (this.innerText == rightAnswer && timer.innerText >= 10){
+        question.innerText = 'CORRECT'
+        score = score + 10
+        scoreBoard.innerText = `Score = ${score}`
+    }
+    else if (this.innerText == rightAnswer){
+        question.innerText = 'CORRECT'
+        score = score + 5
+        scoreBoard.innerText = `Score = ${score}`
     }
     else {
-        question.innerText = `Sorry the correct answer was ${rightAnswer} `
+        question.innerText = `Sorry the correct answer was ${rightAnswer}`
+        clearTimeout
     }
+    next.style.visibility = 'visible'
+    clearTimeout(killTimeout)
+    questionAnswered()
 }
-
-
+//timer countdown
 function countDown(){
-    var seconds = document.querySelector(".timer").textContent;
-    var seconds = document.querySelector(".timer").textContent;
-    var countdown = setInterval(function() {
-    seconds--;
-    document.querySelector(".timer").textContent = seconds;
-    if (seconds <= 0) clearInterval(countdown);
-}, 1000);}
+    timer.innerText = timer.innerText - 1
+}
+//get out of countDown loop (setInterval)
+function questionAnswered(){
+    clearInterval(timerBreak)
+}
+//When you ran out of time end of setTimeout 
+function playTime(){
+    questionAnswered()
+    modal.style.display = "block"
+}
+//reset score
+function reset(){
+    score = 0
+    scoreBoard.innerText =`Score = ${score}`
+}

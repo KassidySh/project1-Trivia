@@ -11,16 +11,27 @@
 </head>
 <body>
     <main class="gameboard">
-    <nav><div class = 'timer'>60</div> <div class=score>Score = 0</div></nav>
+    <nav><div class = 'timer'>20</div> <div class=score>Score = 0</div></nav>
     <h2 class = question>INSTRUCTIONS AND SCORING INFO<button class=start>start</button></h2>
+    <button class=next>Next</button>
+    <button class =finish><a href="index.html">finish</a></button>
+<!-- The Modal -->
+    <div class="modal" id="tooLate">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">next</span>
+    <p>Sorry it looks like you didn't get that one in time. Why don't you move on to the next one?</p>
+  </div>
+
+</div>
+
     <div class = answerbox>
     <div class = answerChoice id = optionA>answer 1</div>    
     <div class = answerChoice id = optionB>answer 2</div>    
     <div class = answerChoice id = optionC>answer 3</div>    
     <div class = answerChoice id = optionD>answer 4</div>    
 </div>
-<button class=next>Next</button>
-<button class =finish><a href="index.html">finish</a></button>
+
 </main>
     <script src="trivia.js"></script>
 </body>

@@ -48,9 +48,15 @@ https://news.ycombinator.com/item?id=2728914
 used for searching through a string and replacing sections
 https://www.w3schools.com/jsref/jsref_replace.asp
 used for countdown timer
+https://www.youtube.com/watch?v=CqDqHiamRHA
 https://tonnygaric.com/blog/create-a-seconds-countdown-in-6-lines-of-javascript
 image opacity
 https://www.w3schools.com/css/css_image_transparency.asp
+how I made the modal
+https://www.w3schools.com/howto/howto_css_modals.asp
+setTimeout
+https://www.youtube.com/watch?v=nGfTjA8qNDA
+
 
 ERRORS:
 [Errors](https://drive.google.com/open?id=1KoQ6pCPQxt_Sp7UDT-Z0SfrdnA-elOET)
