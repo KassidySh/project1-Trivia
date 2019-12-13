@@ -65,6 +65,8 @@ html- website development
 
 [setTimeout](https://www.youtube.com/watch?v=nGfTjA8qNDA)
 
+[modul setup](https://www.w3schools.com/howto/howto_css_modals.asp)
+
 **ERRORS:**
 
 [Errors](https://drive.google.com/open?id=1KoQ6pCPQxt_Sp7UDT-Z0SfrdnA-elOET)
