@@ -15,6 +15,7 @@ const modal = document.querySelector("#tooLate");
 const closeLateModal = document.querySelector(".close");
 //game finished modal
 const overModal = document.querySelector('#gameFinished')
+const modalText = document.querySelector('#gameFinished p')
 const replay = document.querySelector('.replay')
 let rightAnswer = ('')
 let score = 0
@@ -82,6 +83,7 @@ function questionSetUp(data){
         next.style.visibility = 'hidden'
     }
     else if (clickCount == 11){
+        modalText.innerText = `Congradulations! Your score was ${score} would you like to play again?`
         overModal.style.display = "block"
     }
 
