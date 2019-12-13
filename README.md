@@ -56,6 +56,8 @@ how I made the modal
 https://www.w3schools.com/howto/howto_css_modals.asp
 setTimeout
 https://www.youtube.com/watch?v=nGfTjA8qNDA
+z-property when the answer box was hidden beneath the grid
+https://css-tricks.com/almanac/properties/z/z-index/
 
 
 ERRORS:

@@ -1,4 +1,5 @@
 const url = "https://opentdb.com/api.php?amount=50&category=10&type=multiple"
+const answerBox = document.querySelector('div.answerbox')
 const question = document.querySelector('.question')
 const optionA = document.querySelector('#optionA')
 const optionB = document.querySelector('#optionB')
@@ -48,6 +49,8 @@ function questionSetUp(data){
     for (i =0; i<allAnswers.length; i=i+1){
         allAnswers[i].style.display = 'inline'
     }
+    answerBox.style.display = 'grid'
+
     nextQuestion(questionArr)
     return questionArr
 
@@ -120,7 +123,10 @@ function createAnswers(questionArr){
 //search through answers and replace confusing code with readable words
 function workableAnswerChoices (answers){
     for(i=0; i<answers.length; i=i+1){
-        if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
+        if (answer[i].search('&rsquo;')!= -1){
+            answers[i] = answers[i]  
+        }
+        else if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
             answers[i] = answers[i]    
          }
