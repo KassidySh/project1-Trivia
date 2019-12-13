@@ -11,10 +11,6 @@ const scoreBoard = document.querySelector('.score')
 const allAnswers = document.querySelectorAll('.answerChoice')
 const timer = document.querySelector(".timer")
 
-optionA.addEventListener('click', pickedAnswer)
-optionB.addEventListener('click', pickedAnswer)
-optionC.addEventListener('click', pickedAnswer)
-optionD.addEventListener('click', pickedAnswer)
 let score = 0
 let questionArr = []
 let clickCount = 0
@@ -50,32 +46,36 @@ function questionSetUp(data){
     let firstResults = data.results
     shuffle(firstResults)
     shuffledQs = firstResults
-    for (let i=0; i<10; i=i+1){
-        questionArr.push(shuffledQs[i])
-    }
     setVisibility()
     nextQuestion(questionArr)
     // countDown()
 
-var seconds = document.querySelector(".timer").textContent;
-var countdown = setInterval(function() {
-    seconds--;
-    document.querySelector(".timer").textContent = seconds;
-    if (seconds <= 0) clearInterval(countdown);
-}, 1000);
+// var seconds = document.querySelector(".timer").textContent;
+// var countdown = setInterval(function() {
+//     seconds--;
+//     document.querySelector(".timer").textContent = seconds;
+//     if (seconds <= 0) clearInterval(countdown);
+// }, 1000);
+
+
     return questionArr
 }
 
 function setVisibility (){
     for (i =0; i<allAnswers.length; i=i+1){
-        allAnswers[i].style.display = 'block'
+        allAnswers[i].style.display = 'inline'
     }
     next.style.visibility = 'visible'
 }
 
  function nextQuestion(questionArr){
+    optionA.addEventListener('click', pickedAnswer)
+    optionB.addEventListener('click', pickedAnswer)
+    optionC.addEventListener('click', pickedAnswer)
+    optionD.addEventListener('click', pickedAnswer)
     newQuestion(shuffledQs)
     createAnswers(shuffledQs)
+    countDown()
     clickCount=clickCount+1
 
     if (clickCount === 10){
@@ -183,7 +183,11 @@ function assignAnswers(answers) {
         // add a point => say congrats!
 
 function pickedAnswer (e){
-    
+    optionA.removeEventListener('click', pickedAnswer)
+    optionB.removeEventListener('click', pickedAnswer)
+    optionC.removeEventListener('click', pickedAnswer)
+    optionD.removeEventListener('click', pickedAnswer)
+
     if (this.innerText == rightAnswer){
     question.innerText = 'CORRECT'
     score = score + 10
@@ -192,43 +196,14 @@ function pickedAnswer (e){
     else {
         question.innerText = `Sorry the correct answer was ${rightAnswer} `
     }
-    console.log(clickCount)
 }
 
 
-
-// timerFunc()
-//     setTimeout(() => {
-//         forloop subtracts 1 from 30
-//         .innerHTML = i
-//     }, 1000)
-
-
-
-
-// function countDown(){
-//     let seconds = document.querySelector(".timer").textContent;
-// let countdown = setInterval(()=> {
-//     seconds--;
-//     document.querySelector(".timer").textContent = seconds;
-// //     allAnswers.addEventListener('click',stopClock)
-    
-// // function stopClock () {
-// //     clearInterval(intervalId)
-
-
-//     if (seconds <= 0) clearInterval(ID);
-
-//     // else 
-//     //     allAnswers.addEventListener('click',stopClock)
-//     //     clearInterval(intervalId)
-    
-// }, 1000);
-// }
-
-// var seconds = document.querySelector(".timer").textContent;
-// var countdown = setInterval(function() {
-//     seconds--;
-//     document.querySelector(".timer").textContent = seconds;
-//     if (seconds <= 0) clearInterval(countdown);
-// }, 1000);
+function countDown(){
+    var seconds = document.querySelector(".timer").textContent;
+    var seconds = document.querySelector(".timer").textContent;
+    var countdown = setInterval(function() {
+    seconds--;
+    document.querySelector(".timer").textContent = seconds;
+    if (seconds <= 0) clearInterval(countdown);
+}, 1000);}

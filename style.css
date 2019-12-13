@@ -1,11 +1,8 @@
 html{
-background-color: white;
+ background-color: white;
 }
 
 body {
-
-    /* background-image: url(https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80); */
-    /* opacity: .5; */
     background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
     height: 100%;
     width: 100%;
@@ -93,43 +90,52 @@ main {
 @media (max-width:425px) {
     body{
         align-content: center;
-        display: grid;
-        grid-template-columns: 1fr 30fr 1fr;
-        grid-template-rows: 1fr 13fr 1fr;
+        display: auto;
+        /* grid-template-columns: 1fr 30fr 1fr;
+        grid-template-rows: 1fr 13fr 1fr; */
         font-family: 'Tinos', sans-serif;
     }
-    .answerbox{
+    main{
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 50%;
+        /* grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr; */
     }
-.answerChoice{
+    .answerbox{
+        bottom: 0;
+        display: grid;
+        width: 100%;
+        grid-template-columns:  1fr ;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .answerChoice{
     font-size: 30px;
     border-width: 5px;
     height: 70%;
     padding: 2px;
     margin: 4px;
-    width: 100%;
+    width: 95%;
     display: hidden;
-    /* column-span: all; */
 }
 
 #optionA{
-    /* grid-column: 1; */
+    display: inline;
     grid-row: 1;
+    grid-column: 1;
+} 
+#optionB{ 
+    display: inline;
+    grid-row:2;
+    grid-column: 1;
 }
-#optionB{
-    grid-column: span;
-    grid-row: 2;
-}
-#optionC{
-    grid-row: 3;
+#optionC{ 
+    display: inline;
+    grid-row:3;
+    grid-column: 1;
 }
 #optionD{
-    grid-row: 4;  
+    display: inline;
+    grid-row:4;
+    grid-column: 1;
 }
 }
