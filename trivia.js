@@ -9,10 +9,11 @@ const start = document.querySelector('button.start')
 const next = document.querySelector('.next')
 const scoreBoard = document.querySelector('.score')
 const allAnswers = document.querySelectorAll('.answerChoice')
-const timer = document.querySelector(".timer")
+const timer = document.querySelector('.timer')
+const qCount = document.querySelector('#questionCount')
 //modal late
-const modal = document.querySelector("#tooLate");
-const closeLateModal = document.querySelector(".close");
+const modal = document.querySelector('#tooLate');
+const closeLateModal = document.querySelector('.close');
 //game finished modal
 const overModal = document.querySelector('#gameFinished')
 const modalText = document.querySelector('#gameFinished p')
@@ -49,6 +50,7 @@ function shuffle(results) {
 //add buttons & shuffle question list
 function questionSetUp(data){
     let results = data.results
+    clickCount = 0
     shuffle(results)
     shuffledQs = results
     for (i =0; i<allAnswers.length; i=i+1){
@@ -78,6 +80,7 @@ function questionSetUp(data){
 
     next.style.visibility = 'hidden'
     clickCount=clickCount+1
+    qCount.innerText = `Question ${clickCount}`
     if (clickCount === 10){
         next.innerText = 'finish'
         next.style.visibility = 'hidden'
