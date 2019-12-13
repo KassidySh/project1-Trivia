@@ -14,11 +14,10 @@ clickable buttons and automated scoring
 
 **Bronze level;** 
 
-popUp Module
 [wire Frame](https://docs.google.com/document/d/1AUF9G_0aoVmGFE_eAr_iTa7O7XiKT4cOiV5SK1tmMww/edit?usp=sharing)
 [timeLine](https://docs.google.com/document/d/1pVFWI9Ffss8oMElsgsvctqHnRwYWj5Z9JsQl2UhS644/edit?usp=sharing)
 
-
+popUp Modal
 diisplay on mobile
 working on my portfolio
 play button take you to game
@@ -37,9 +36,13 @@ have 4 gameplay options; books, comics, theatre, mythology
 **Installation instructions:**
 
 go to 
-https://github.com/KassidySh/project1-Trivia.git
+[My gitHub](https://github.com/KassidySh/project1-Trivia.git)
 clone the repo down to your machine
 open up the index.html
+
+**or**
+
+[Go to my Website](https://kassidysh.github.io/project1-Trivia/)
 
 **tech used:**
 
