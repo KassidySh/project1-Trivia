@@ -29,10 +29,10 @@ main {
     display: block;
     border-radius: 20px;
     color: white;
-    font-size: 30px;
+    font-size: 100%;
     height: 100px;
     width: 20%;
-    margin: 20% 10% 20% 38%;
+    margin: 20% 10% 20% 40%;
     z-index: 1;
 }
 /* modal begins */
@@ -92,13 +92,13 @@ main {
 }
 /* modal end */
 .timer{
-    font-size: 40px;
+    font-size: 150%;
     font-weight: bold;
     display: inline-block;
     padding:3%;
 }
 .score {
-    font-size: 40px;
+    font-size: 150%;
     position: absolute;
     padding:3%;
     right: 0%;
@@ -135,7 +135,7 @@ main {
 }
 #questionCount{
     display: inline;
-    font-size: 40px;
+    font-size: 150%;
     margin-left: 30%;
     margin-right: 5%;
 }
@@ -187,13 +187,13 @@ main {
         margin: 10% 10% 10% 30%;
     }
     .score {
-        font-size: 25px;
+        font-size: 100%;
         position: absolute;
         right: 0%;
         display: inline;
     } 
     .timer{
-        font-size: 25px;
+        font-size: 100%;
         font-weight: bold;
         display: inline-block;
     }
@@ -211,12 +211,12 @@ main {
 
     }
     .answerChoice{
-    font-size: 20px;
-    border-width: 5px;
-    height: 70%;
-    padding: 2px;
-    margin: 4px;
-    width: 95%;
+        font-size: 20px;
+        border-width: 5px;
+        height: 70%;
+        padding: 2px;
+        margin: 4px;
+        width: 95%;
     }
     .next{
         right: 0%;
@@ -274,7 +274,7 @@ main {
         font-weight: bold;
         padding: 20% 0 0 0;
       }
-      .replay:hover,
+      .replay:hover
       .replay:focus {
         color: black;
         text-decoration: none;
@@ -284,11 +284,11 @@ main {
         background-color: rgba(255,255,255,.5);
     }
     #questionCount{
-        display: inline;
-        position: relative;
-        font-size: 18px;
+        display: inline-block;
+        position: absolute;
+        font-size: 100%;
         margin-left: 10%;
-        margin-right: 5%;
+        margin-right: 10%;
     }
     #optionA{
         grid-row: 1;

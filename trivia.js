@@ -96,28 +96,10 @@ function questionSetUp(data){
 
     return clickCount
  }
-//search through questions for confusing characters
+//pull question from array and print it
 function newQuestion (questionArr){
-
     let currentQuestion = questionArr[clickCount].question
-    //find out if something needs a quote
-    if (currentQuestion.search("&quot;") == -1 && currentQuestion.search("&#039;") == -1){
-       question.innerText = currentQuestion
-       
-    }
-    else if (currentQuestion.search("&quot;") == -1){
-        let questionQuote = currentQuestion.replace(/&#039;/gi,'\'') // source this thing you found
-        question.innerText = questionQuote
-    }
-    else if(currentQuestion.search("&#039;") == -1){
-        let quotedQuestion = currentQuestion.replace(/&quot;/gi,'\"')
-        question.innerText = quotedQuestion
-    }
-    else{
-        let questionQuote = currentQuestion.replace(/&#039;/gi,'\'')
-        let quotedQuestion = questionQuote.replace(/&quot;/gi,'\"')
-        question.innerText = quotedQuestion
-    }
+    question.innerHTML = currentQuestion
 }
 // find correct answer
 // make array for all answers
@@ -126,57 +108,16 @@ function createAnswers(questionArr){
     rightAnswer = questionArr[clickCount].correct_answer
     let answers = questionArr[clickCount].incorrect_answers
     answers.push(rightAnswer)
-    workableAnswerChoices(answers)
-    rightAnswer = answers[3]
     results = answers
     shuffle(results)
     assignAnswers(results)
 }
-//search through answers and replace confusing code with readable words
-function workableAnswerChoices (answers){
-    for(i=0; i<answers.length; i=i+1){
-        if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-        && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
-            answers[i] = answers[i]    
-         }
-         //rplace apostrophe
-         else if (answers[i].search("&quot;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
-            answers[i] = answers[i].replace(/&#039;/gi,'\'') // source this thing you found
-         }
-         //replace quotes
-         else if(answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
-            answers[i] = answers[i].replace(/&quot;/gi,'\"')
-         }
-         //replace fancy and (ampersand)
-         else if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
-            answers[i] = answers[i].replace(/&amp;/gi,'&') // source this thing you found
-         }
-         //replace ë
-         else if(answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&eacute") == -1 && answers[i].search("&quot;") == -1 && answers[i].search("&rsquo;")== -1){
-            answers[i] = answers[i].replace(/&euml;/gi,'ë')
-         }
-         //replace accent e
-         else if (answers[i].search("&quot;") == -1 && answers[i].search("&amp;") == -1
-         && answers[i].search("&#039;") == -1 && answers[i].search("&euml;") == -1 && answers[i].search("&rsquo;")== -1){
-            answers[i] = answers[i].replace(/&eacute;/gi,'\'') // source this thing you found
-         }
-         //replace for bullseye
-        else if (answers[i].search("&quot;") == -1 && answers[i].search("&#039;") == -1 && answers[i].search("&amp;") == -1
-        && answers[i].search("&eacute") == -1 && answers[i].search("&euml;") == -1){
-            answers[i] = answers[i]   .replace(/&rsquo;/gi,'\'')
-         }
-    }
-}
 //assign answer to answer option
 function assignAnswers(answers) {
-    optionA.innerText = answers[0]
-    optionB.innerText = answers[1]
-    optionC.innerText = answers[2]
-    optionD.innerText = answers[3]
+    optionA.innerHTML = answers[0]
+    optionB.innerHTML = answers[1]
+    optionC.innerHTML = answers[2]
+    optionD.innerHTML = answers[3]
 }
 //Modal When the user clicks on next button, close the modal
 function skipQuestion() {
@@ -201,7 +142,7 @@ function pickedAnswer (e){
         scoreBoard.innerText = `Score = ${score}`
     }
     else {
-        question.innerText = `Sorry the correct answer was ${rightAnswer}`
+        question.innerHTML = `Sorry the correct answer was ${rightAnswer}`
         clearTimeout
     }
     next.style.visibility = 'visible'
