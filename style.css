@@ -33,7 +33,7 @@ main {
     height: 100px;
     width: 20%;
     margin: 20% 10% 20% 40%;
-    z-index: 1;
+    /* z-index: 1; */
 }
 /* modal begins */
 .modal {
@@ -164,6 +164,7 @@ main {
         font-size: 120%;
     }
     main{
+        /* do percentage */
         height: 450px;
         display: block;
         grid-column: 1/span 3;
@@ -270,6 +271,7 @@ main {
       .replay {
         color: white;
         float: right;
+        /* percentage use ems */
         font-size: 20px;
         font-weight: bold;
         padding: 20% 0 0 0;

@@ -167,6 +167,7 @@ function reset(){
     score = 0
     scoreBoard.innerText =`Score = ${score}`
 }
+//hit play again reset game
 function backHome(){
     getQuestionList()
     overModal.style.display = 'none'
